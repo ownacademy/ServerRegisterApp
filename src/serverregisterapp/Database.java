@@ -33,14 +33,15 @@ public class Database {
             
             System.out.println("Creating statement...");
             stmt = conn.createStatement();
-          
-            String sqlInstert = "INSERT INTO list " +
-                                "VALUES ('"+data.ID+"', '"+data.SERVER_NAME+"', '"+data.SERVER_IP+"', '"+data.DOCKER_STATUS+"')";
+            
+            String sqlInstert = "INSERT INTO list (`server_name`, `server_ip`, `docker_status`)" +
+                                "VALUES ('"+data.SERVER_NAME+"', '"+data.SERVER_IP+"', '"+data.DOCKER_STATUS+"')";
             stmt.executeUpdate(sqlInstert);
             System.out.println("Inserted records into the table...");
            
             return true;
         } catch (Exception e) {
+            System.err.println(e);
             return false;
         }
     }

@@ -14,7 +14,6 @@ import java.util.Hashtable;
  * @author Ivan
  */
 public class ServerData {
-    public int ID;
     public String SERVER_NAME;
     public String SERVER_IP;
     public String DOCKER_STATUS;
@@ -22,8 +21,6 @@ public class ServerData {
     public static ServerData EXTRACT_DATA(String getRequest){
         String getParams = getRequest.replace("GET /", "");
         getParams = getParams.replace(" HTTP/1.1", "");
-        
-        System.out.println("HERE: " + getParams);
         
         String[] splitedParams = getParams.split("&");
         HashMap<String, String> params = new HashMap<>();
@@ -33,7 +30,6 @@ public class ServerData {
         }
         
         ServerData data = new ServerData();
-        data.ID = Integer.parseInt(params.get("id"));
         data.SERVER_NAME = params.get("serverName");
         data.SERVER_IP = params.get("ip");
         data.DOCKER_STATUS = params.get("dockerStatus");

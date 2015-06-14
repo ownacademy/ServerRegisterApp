@@ -34,11 +34,14 @@ public class Database {
             System.out.println("Creating statement...");
             stmt = conn.createStatement();
             
+            System.out.println("Executing INSERT query!");
             String sqlInstert = "INSERT INTO list (`server_name`, `server_ip`, `docker_status`)" +
                                 "VALUES ('"+data.SERVER_NAME+"', '"+data.SERVER_IP+"', '"+data.DOCKER_STATUS+"')";
             stmt.executeUpdate(sqlInstert);
             System.out.println("Inserted records into the table...");
            
+            stmt.close();
+            System.out.println("Connection closed!");
             return true;
         } catch (Exception e) {
             System.err.println(e);
